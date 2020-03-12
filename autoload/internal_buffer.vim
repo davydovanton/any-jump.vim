@@ -1,3 +1,4 @@
+
 " ----------------------------------------------
 " Internal buffer prototype definition
 " ----------------------------------------------
@@ -463,7 +464,7 @@ fu! s:InternalBuffer.RenderUiUsagesList(grep_results, start_ln) dict abort
   endif
 
   call self.AddLineAt([
-    \self.CreateItem("text", ">", g:AnyJumpGetColor('heading_text'), {'layer': 'usages'}),
+    \self.CreateItem("text", ">>>", g:AnyJumpGetColor('heading_text'), {'layer': 'usages'}),
     \self.CreateItem("text", self.keyword, g:AnyJumpGetColor('heading_keyword'), {'layer': 'usages'}),
     \self.CreateItem("text", len(self.usages_grep_results) . " references", g:AnyJumpGetColor('heading_text'), {'layer': 'usages'}),
     \], start_ln)
@@ -554,6 +555,9 @@ fu! s:InternalBuffer.RenderUi() dict abort
   call self.AddLine([ self.CreateItem("text", "", "Comment") ])
 
   call self.RenderUiUsagesList(self.usages_grep_results, self.len() + 1)
+
+  call self.AddLine([ self.CreateItem("text", "", "Comment") ])
+  call self.AddLine([ self.CreateItem("text", "", "Comment") ])
 
   call self.AddLine([ self.CreateItem("help_link", "> Help", g:AnyJumpGetColor('heading_text')) ])
 
