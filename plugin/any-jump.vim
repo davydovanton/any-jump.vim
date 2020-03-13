@@ -729,6 +729,7 @@ fu! g:AnyJumpHandlePreview() abort
         let render_ln += 1
       endfor
 
+      call ui.AddLineAt([ ui.CreateItem("text", "", "Comment") ], render_ln + 1)
       call ui.EndUiTransaction()
 
     elseif action_item.type == 'help_link'
